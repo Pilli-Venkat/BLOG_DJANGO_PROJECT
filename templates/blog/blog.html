@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+
+
+        {% block content %}
+     
+           
+        
+
+        <section class="blog_area sec_pad">
+            <div class="container">
+                <div class="row  ">
+                    <div class="col-lg-8  ">
+                       
+                       
+
+                        {% for post in posts %}
+                        <div class="blog_list_item mb_50 " >
+                            <img class="img-fluid" src="{{post.thumbnail.url}}" class='img-responsive img-fluid img-thumbnail' height='1000' width='1000'   alt="">
+                            <div class="blog_content">
+                                <div class="post_date">
+                                    <h2>14 <span>March</span></h2>
+                                </div>
+                                <div class="entry_post_info">
+                                    By: <a href=""> {{post.user}}</a>
+                                    <a href="">2 Comments</a>
+                                    <a href="">{{post.category}}</a>
+                                </div>
+                                <a href="/post/{{post.title}}">
+                                    <h5 class="f_p f_size_20 f_500 t_color mb_20">{{ post.title }}</h5>
+                                </a>
+                                <p class="f_400 mb_20">{{ post.description }}</p>.</p>
+                                <a href="/post/{{post.title}}" class="learn_btn_two">Read More <i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                       
+                      
+               
+                        <!--<ul class="list-unstyled page-numbers shop_page_number text-left mt_30">
+                            <li><span aria-current="page" class="page-numbers current">1</span></li>
+                            <li><a class="page-numbers" href="">2</a></li>
+                            <li><a class="next page-numbers" href=""><i class="ti-arrow-right"></i></a></li>
+                        </ul>-->
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if posts.has_previous %}
+                                    <a href="?page=1">&laquo; first</a>
+                                    <a href="?page={{ posts.previous_page_number }}">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                                </span>
+
+                                {% if posts.has_next %}
+                                    <a href="?page={{ posts.next_page_number }}">next</a>
+                                    <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                                          
+
+
+
+                        
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-sidebar">
+                            <div class="widget sidebar_widget widget_search">
+
+                                <form action="{% url  'search' %}" class="search-form input-group">
+                                    <input type="search" class="form-control widget_input" placeholder="Search" name='search'>
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </form>
+
+
+                            </div>
+                            <div class="widget sidebar_widget widget_recent_post mt_60">
+                                <div class="widget_title">
+                                    <h3 class="f_p f_size_20 t_color3">Recent posts</h3>
+                                    <div class="border_bottom"></div>
+                                </div>
+
+                                {% for post in r_posts %}
+
+
+                                <div class="media post_item">
+                                    <img src="{{post.thumbnail.url}}" class='img-responsive img-fluid img-thumbnail' height='75' width='200' alt="">
+                                    <div class="media-body">
+                                        <a href="/post/{{post.title}}">
+                                            <h3 class="f_size_16 f_p f_400">{{post.title}}</h3>
+                                        </a>
+                                        <div class="entry_post_info">
+                                            By: <a href="">{{post.user}}</a>
+                                            <a href="">{{post.posted}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="widget sidebar_widget widget_categorie mt_60">
+                                <div class="widget_title">
+                                    <h3 class="f_p f_size_20 t_color3">Categories</h3>
+                                    <div class="border_bottom"></div>
+                                </div>
+                                <ul class="list-unstyled">
+                                    {% for category in cat %}
+                                    <li> <a href="category/{{category.name}}/"><span>{{category}}</span><em></em></a> </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="widget sidebar_widget widget_tag_cloud mt_60">
+                                <div class="widget_title">
+                                    <h3 class="f_p f_size_20 t_color3">Tags</h3>
+                                    <div class="border_bottom"></div>
+                                </div>
+                                <div class="post-tags">
+                                    <a href="">SaasLand</a>
+                                    <a href="">Web Design</a>
+                                    <a href="">Saas</a>
+                                    <a href="">Cooling System</a>
+                                    <a href="">Corporate</a>
+                                    <a href="">Software</a>
+                                    <a href="">Landing</a>
+                                    <a href="">Wheels</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    {% endblock %}
+    
+
