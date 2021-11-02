@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-# Configure Django App for Heroku.
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -124,12 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-'''STATICFILES_DIRS = [
+'''
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static") # this is your static folder
-]'''
-
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles') #this is you assets folder.
+]
+'''
+STATIC_ROOT = os.path.join(BASE_DIR,'static') #this is you assets folder.
 
 
 
