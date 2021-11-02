@@ -3,16 +3,16 @@
 
 
         {% block content %}
-     
-           
-        
+
+
+
 
         <section class="blog_area sec_pad">
             <div class="container">
                 <div class="row  ">
                     <div class="col-lg-8  ">
-                       
-                       
+
+
 
                         {% for post in posts %}
                         <div class="blog_list_item mb_50 " >
@@ -26,18 +26,25 @@
                                     <a href="">2 Comments</a>
                                     <a href="">{{post.category}}</a>
                                 </div>
-                                <a href="/post/{{post.title}}">
+                                <a href="/post/{{post.slug}}">
                                     <h5 class="f_p f_size_20 f_500 t_color mb_20">{{ post.title }}</h5>
                                 </a>
-                                <p class="f_400 mb_20">{{ post.description }}</p>.</p>
+                                <p class="f_400 mb_20">{{ post.description | safe }}</p>.</p>
+
+
+
+
+
+
+
                                 <a href="/post/{{post.title}}" class="learn_btn_two">Read More <i class="ti-arrow-right"></i></a>
                             </div>
                         </div>
                         {% endfor %}
 
-                       
-                      
-               
+
+
+
                         <!--<ul class="list-unstyled page-numbers shop_page_number text-left mt_30">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
                             <li><a class="page-numbers" href="">2</a></li>
@@ -60,11 +67,11 @@
                                 {% endif %}
                             </span>
                         </div>
-                                          
 
 
 
-                        
+
+
                     </div>
                     <div class="col-lg-4">
                         <div class="blog-sidebar">
@@ -89,7 +96,7 @@
                                 <div class="media post_item">
                                     <img src="{{post.thumbnail.url}}" class='img-responsive img-fluid img-thumbnail' height='75' width='200' alt="">
                                     <div class="media-body">
-                                        <a href="/post/{{post.title}}">
+                                        <a href="/post/{{post.title|slugify}}">
                                             <h3 class="f_size_16 f_p f_400">{{post.title}}</h3>
                                         </a>
                                         <div class="entry_post_info">
@@ -108,10 +115,13 @@
                                 </div>
                                 <ul class="list-unstyled">
                                     {% for category in cat %}
-                                    <li> <a href="category/{{category.name}}/"><span>{{category}}</span><em></em></a> </li>
+                                    <li> <a href="/category/{{category.name}}"><span>{{category}}</span><em></em></a> </li>
                                     {% endfor %}
                                 </ul>
                             </div>
+
+
+                            <!--
                             <div class="widget sidebar_widget widget_tag_cloud mt_60">
                                 <div class="widget_title">
                                     <h3 class="f_p f_size_20 t_color3">Tags</h3>
@@ -128,6 +138,10 @@
                                     <a href="">Wheels</a>
                                 </div>
                             </div>
+                            -->
+
+
+
                         </div>
                     </div>
 
@@ -139,5 +153,5 @@
 
 
     {% endblock %}
-    
+
 
