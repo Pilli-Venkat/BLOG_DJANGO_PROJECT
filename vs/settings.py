@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
     os.path.join(BASE_DIR, "static") # this is your static folder
 ]'''
 
-STATIC_ROOT = os.path.join(BASE_DIR,'assets') #this is you assets folder.
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles') #this is you assets folder.
 
 
 
