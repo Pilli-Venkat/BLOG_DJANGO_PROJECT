@@ -2,6 +2,8 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+
+from autoslug import AutoSlugField
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -19,15 +21,19 @@ class Category(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from='title',)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='post/thumbnail')
     description = RichTextField(null=True,blank=True)
-    tags = models.TextField()
-    posted = models.DateField(default=datetime.now)
+    tags = models.TextField(null=True, blank=True)
+    posted = models.DateField(default=datetime.now,null=True,blank=True)
     is_published = models.BooleanField(default=False)
+
+
 
     def __str__(self):
         return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE ,related_name="comments")
@@ -44,3 +50,5 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "Comment"
         verbose_name_plural = "Comments"
+
+    
