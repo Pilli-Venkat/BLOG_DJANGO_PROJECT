@@ -5,10 +5,11 @@
 <!-- saved from url=(0051)http://droitthemes.com/html/saasland/blog-list.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Required meta tags -->
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %}
-    <title>Vs</title>
+    <title>My Site</title>
     {% endblock %}
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
@@ -27,21 +28,21 @@
 <style>
     div.scroll
     {
-    
+
     overflow:scroll;
     float: left;
     }
-</style>    
-    
+</style>
+
 <script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script></head>
 
 <body data-new-gr-c-s-check-loaded="14.993.0" data-gr-ext-installed="">
-    
+
     <div class="body_wrapper">
         <header class="header_area navbar_fixed">
             <nav class="navbar navbar-expand-lg menu_one menu_four">
                 <div class="container">
-                    <a class="navbar-brand sticky_logo" href=""><img src="{% static 'img/post_1.jpg' %}" srcset="{img/logo2x-2.png 2x}" alt="logo"><img src="img/logo.png" srcset="img/logo2x.png 2x" alt=""></a>
+
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="menu_toggle">
                             <span class="hamburger">
@@ -58,80 +59,80 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                         <ul class="navbar-nav menu w_menu ml-auto mr-auto">
-                            <li class="nav-item dropdown submenu mega_menu mega_menu_two">
+                            <li class="nav-item">
                                 <a class="nav-link dropdown-toggle" href="{% url 'home' %}"  aria-haspopup="true" aria-expanded="false">
                                     Home
                                 </a>
 
                             </li>
-                            <li class="dropdown submenu nav-item"><a title="Pages" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="http://droitthemes.com/html/saasland/blog-list.html#">Pages</a>
-                               
+                            <li class="dropdown submenu nav-item"><a title="Pages" class="dropdown-toggle nav-link"  role="button" aria-haspopup="true" aria-expanded="false" href="{% url 'add' %}">Upload </a>
+
                             </li>
 
 
 
 
-                            <li class="nav-item dropdown submenu mega_menu">
+                            <li class="nav-item">
                                 <a class="nav-link dropdown-toggle" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
                                     Contact Us
                                 </a>
                                 </li>
-                                
 
 
-                            <li class="nav-item dropdown submenu">
+
+                            <li class="nav-item">
                                 <a class="nav-link dropdown-toggle" href="{% url 'about' %}"  aria-haspopup="true" aria-expanded="false">
                                     About us
                                 </a>
-                               
+
                             </li>
 
                             {% if request.user.is_authenticated %}
 
-                                        <li class="nav-item dropdown submenu mega_menu">
+                                        <li class="nav-item">
                                         <a class="nav-link dropdown-toggle" href="{% url 'logout' %}" aria-haspopup="true" aria-expanded="false">
                                             Logout
                                         </a>
-                                    
-                                                </li>  
-                                        <li class="nav-item dropdown submenu mega_menu">
+
+                                                </li>
+                                        <li class="nav-item">
                                         <a class="nav-link dropdown-toggle" href="" aria-haspopup="true" aria-expanded="false">
                                             Dashboard
                                         </a>
-                                    
-                                                </li>    
-                                        <li class="nav-item dropdown submenu mega_menu">
+
+                                                </li>
+                                        <li class="nav-item">
                                         <a class="nav-link dropdown-toggle" href="" aria-haspopup="true" aria-expanded="false">
-                                            {{ request.user.first_name }} 
+                                            {{ request.user.first_name }}
                                         </a>
-                                    
-                                                </li>               
+
+                                                </li>
 
                                     {% else %}
 
-                                    
-                                
-                                    <li class="nav-item dropdown submenu mega_menu">
+
+
+                                    <li class="nav-item">
                                         <a class="nav-link dropdown-toggle" href="{% url 'login' %}"  aria-haspopup="true" aria-expanded="false">
                                             Login
                                         </a>
-                                    
+
                                                 </li>
-                                    <li class="nav-item dropdown submenu mega_menu">
+                                    <li class="nav-item">
                                         <a class="nav-link dropdown-toggle" href="{% url 'signup' %}" aria-haspopup="true" aria-expanded="false">
                                             Sign Up
                                         </a>
-                                    
-                                                </li>           
+
+                                                </li>
                             {% endif %}
-                                       
-                                       
-                                           
+
+
+
                                     </ul>
                                 </div>
                             </li>
                         </ul>
-                     
+
                     </div>
                 </div>
             </nav>
@@ -139,7 +140,7 @@
 
 
         {% block content %}
-        
+
         {% endblock %}
 
 
@@ -151,17 +152,21 @@
                             <div class="f_widget company_widget">
                                 <a href="http://droitthemes.com/html/saasland/index.html" class="f-logo"><img src="img/logo.png" srcset="img/logo2x.png 2x" alt=""></a>
                                 <div class="widget-wrap">
-                                    <p class="f_400 f_p f_size_15 mb-0 l_height34"><span>Email:</span> <a href="mailto:saasland@gmail.com" class="f_400">saasland@gmail.com</a></p>
-                                    <p class="f_400 f_p f_size_15 mb-0 l_height34"><span>Phone:</span> <a href="tel:9494428281" class="f_400">+948 256 347 968</a></p>
+                                    <p class="f_400 f_p f_size_15 mb-0 l_height34"><span>Email:</span> <a href="mailto:venkatasai2920@gmail.com" class="f_400">venkatsai2920@gmail.com</a></p>
+                                    <p class="f_400 f_p f_size_15 mb-0 l_height34"><span>Phone:</span> <a href="tel:9248714666" class="f_400">+Call us</a></p>
                                 </div>
-                                <form action="http://droitthemes.com/html/saasland/blog-list.html#" class="f_subscribe mailchimp" method="post" novalidate="true">
+                                <!--
+                                <form action="" class="f_subscribe mailchimp" method="post" novalidate="true">
                                     <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
                                     <button class="btn btn-submit" type="submit"><i class="ti-arrow-right"></i></button>
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
                                 </form>
+                                -->
                             </div>
                         </div>
+                       <!--
+
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget about-widget pl_40">
                                 <h3 class="f-title f_600 t_color f_size_18 mb_40">About Us</h3>
@@ -201,6 +206,9 @@
                                 </ul>
                             </div>
                         </div>
+                        -->
+
+
                     </div>
                 </div>
             </div>
@@ -208,20 +216,20 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-5 col-sm-6">
-                           
+
                         </div>
                         <div class="col-lg-4 col-md-3 col-sm-6">
                             <div class="f_social_icon_two text-center">
-                                <a href="http://droitthemes.com/html/saasland/blog-list.html#"><i class="ti-facebook"></i></a>
-                                <a href="http://droitthemes.com/html/saasland/blog-list.html#"><i class="ti-twitter-alt"></i></a>
-                                <a href="http://droitthemes.com/html/saasland/blog-list.html#"><i class="ti-vimeo-alt"></i></a>
-                                <a href="http://droitthemes.com/html/saasland/blog-list.html#"><i class="ti-pinterest"></i></a>
+                                <a href=""><i class="ti-facebook"></i></a>
+                                <a href=""><i class="ti-twitter-alt"></i></a>
+                                <a href=""><i class="ti-vimeo-alt"></i></a>
+                                <a href=""><i class="ti-pinterest"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <ul class="list-unstyled f_menu text-right">
-                                <li><a href="http://droitthemes.com/html/saasland/blog-list.html#">Terms of Use</a></li>
-                                <li><a href="http://droitthemes.com/html/saasland/blog-list.html#">Privacy Policy</a></li>
+                                <li><a href="">Terms of Use</a></li>
+                                <li><a href="">Privacy Policy</a></li>
                             </ul>
                         </div>
                     </div>
@@ -229,7 +237,7 @@
             </div>
         </footer>
 
-        
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{% static 'js/jquery-3.2.1.min.js.download'%}"></script>

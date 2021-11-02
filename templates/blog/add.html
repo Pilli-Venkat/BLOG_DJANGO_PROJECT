@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+     {% block content %}
+     <section class="blog_area sec_pad">
+
+    <div class="body_wrapper">
+      <div class="container">
+      <div>
+    
+
+    <form method="POST">
+    {% csrf_token %}
+
+    {{ form.media }}
+    {{ form.as_p }}
+    
+
+    {{ form.content }}
+    <input type='submit' class="btn btn-primary">
+    </form>
+      </div>
+      </div>
+
+    </div>
+    </section>
+
+    
+
+
+
+
+
+
+     {% endblock %}
+

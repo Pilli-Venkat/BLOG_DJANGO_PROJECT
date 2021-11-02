@@ -27,13 +27,14 @@
                                 </div>
                                 <div class="entry_post_info">
                                     By: <a href="">{{post.user}}</a>
-                                    <a href="">2 Comments</a>
+                                    C
                                     <a href="">{{post.category}}</a>
                                 </div>
                                 <a href="#">
                                     <h5 class="f_p f_size_20 f_500 t_color mb_20">{{post.title}}</h5>
                                 </a>
-                                <p class="f_400 mb-30">{{post.description}}</p>
+                                <p class="f_400 mb-30">{{post.description | safe }}</p>
+                                 <a href="https://api.whatsapp.com/send?phone=919492330558&text= http://127.0.0.1:8000/post/{{slug}} " class="learn_btn_two">Order <i class="ti-arrow-right"></i></a>
                                 <!--<blockquote class="blockquote mb_40">
                                     <h6 class="mb-0 f_size_18 l_height30 f_p f_400">Elizabeth ummm I'm telling bodge
                                         spend a penny say wellies say James Bond, bubble and squeak a such a fibber you
@@ -79,17 +80,18 @@
                                         <div class="entry_post_info">
                                             <a href="">{{related.posted}}</a>
                                         </div>
-                                        <a href="">
+                                        <a href="/post/{{related.slug}}">
                                             <h5 class="f_p f_size_16 f_500 t_color">{{related.title}}</h5>
                                         </a>
-                                        <p class="f_400 mb-0">{{related.description}}</p>
+                                        <p class="f_400 mb-0">{{related.description|safe}}</p>
+
                                     </div>
                                 </div>
                             </div>
                             {% endfor %}
 
 
-                            
+
                         </div>
                     </div>
                         <!-- End Recent Posts -->
@@ -101,7 +103,7 @@
                             <div class="border_bottom"></div>
                         </div>
                         <ul class="comment-box list-unstyled mb-0">
-                             
+
                              {% for comment in comments %}
 
 
@@ -117,12 +119,12 @@
                                         <p>{{comment.comments}}</p>
                                     </div>
                                 </div>
-                                
+
                             </li>
                                {% endfor %}
 
                         </ul>
-                        
+
                         <div class="widget_title mt_100">
                             <h3 class="f_p f_size_20 t_color3">Leave a Comment</h3>
                             <div class="border_bottom"></div>
@@ -146,7 +148,7 @@
                             </div>
                             <div class="col-md-12"><button class="btn btn_three btn_hover f_size_15 f_500" type="submit">Post Comment</button></div>
                         </form>
-                        
+
 
                         <!-- <ul class="list-unstyled page-numbers shop_page_number text-left mt_30">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
@@ -155,7 +157,7 @@
                         </ul> -->
                     </div>
 
-                    
+
 
                         <!-- SideBar -->
 
@@ -180,12 +182,12 @@
                                 <div class="media post_item">
                                     <img src="{{recent_posts.thumbnail.url}}" class='img-responsive img-fluid img-thumbnail' height='75' width='200' alt="">
                                     <div class="media-body">
-                                        <a href="/post/{{recent_posts.title}}">
+                                        <a href="/post/{{recent_posts.slug}}">
                                             <h3 class="f_size_16 f_p f_400">{{recent_posts.title}}</h3>
                                         </a>
                                         <div class="entry_post_info">
                                             By: <a href="http://droitthemes.com/html/saasland/blog-list.html#">{{recent_posts.user}}</a>
-                                            <a href="http://droitthemes.com/html/saasland/blog-list.html#">{{recent_posts.posted}}</a>
+                                            <a href="">{{recent_posts.posted}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +200,7 @@
                                 </div>
                                 <ul class="list-unstyled">
                                    {% for category in cat %}
-                                    <li> <a href="category/{{category.name}}/"><span>{{category}}</span><em></em></a> </li>
+                                    <li> <a href="/category/{{category.name}}"><span>{{category}}</span><em></em></a> </li>
                                     {% endfor %}
                                 </ul>
                             </div>
@@ -206,7 +208,10 @@
                                 <div class="widget_title">
                                     <h3 class="f_p f_size_20 t_color3">Tags</h3>
                                     <div class="border_bottom"></div>
-                                </div>
+                                </div> 
+                                <!--
+
+
                                 <div class="post-tags">
                                     <a href="">SaasLand</a>
                                     <a href="">Web Design</a>
@@ -217,6 +222,10 @@
                                     <a href="">Landing</a>
                                     <a href="">Wheels</a>
                                 </div>
+                                -->
+                                
+
+
                             </div>
                         </div>
                     </div>

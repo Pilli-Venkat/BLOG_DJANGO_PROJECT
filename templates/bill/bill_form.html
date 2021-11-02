@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+ {% block content %}
+ <section class="blog_area sec_pad">
+
+  <div class="body_wrapper">
+      <div class="container">
+      <div>
+       <div class="card-body">
+    <form method="POST" action="{% url 'add-item' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="button" type="submit" value="Submit">
+    </form>
+    </div>
+
+
+
+
+
+ </div>
+
+    </div>
+    </section>
+
+{% endblock %}      
