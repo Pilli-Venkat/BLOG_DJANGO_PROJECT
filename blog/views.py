@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.core.paginator import Paginator
 from  django.contrib.auth.models import User
-from . models import Comment, Post, Category
+from . models import Comment, Post, Category , Like
 from . forms import AddForm
+
 
 def add_post(request):
     form = AddForm()
@@ -26,11 +27,13 @@ def add_post(request):
 def blog(request):
     cat = Category.objects.all()
     posts = Post.objects.filter(is_published=True)
+   
     r_posts = Post.objects.filter(is_published=True).order_by('posted')
     #paginator
     posts= Paginator(posts,5)
     page = request.GET.get('page')
     posts = posts.get_page(page)
+    
     
     return render(request,'blog/blog.html',{'posts': posts, 'cat': cat , 'r_posts':r_posts})
 
@@ -42,11 +45,30 @@ def post(request,title):
     
     
     
+    
     post = Post.objects.get(slug=title)
+    likes = Like.objects.filter(particular_post = post).count()
     
     related_posts = Post.objects.filter(category=post.category)
     comments = Comment.objects.filter(post=post)
-    return render(request,'blog/post.html',{ 'post': post,'slug': post.slug ,'cat': cat , 'comments': comments,'recent_posts': recent_posts, 'related_posts' : related_posts})    
+    return render(request,'blog/post.html',{ 'post': post,'slug': post.slug ,'cat': cat , 'comments': comments,'like':likes,'recent_posts': recent_posts, 'related_posts' : related_posts})    
+def like_view(request):
+    if request.method == 'POST':
+        l = request.POST.get('loves')
+        pid = request.POST.get('id')
+        name = request.POST.get('name')
+
+        post = Post.objects.get(id=pid)
+        
+        usernamef = User.objects.get(first_name=name)
+        l = Like(particular_post = post,name=usernamef.first_name , likes =0)
+        l.save()
+        return redirect ('post',title=post.slug)
+    return redirect('home')    
+
+
+
+
 
 
 def post_comment(request):
@@ -67,7 +89,7 @@ def post_comment(request):
         c.save()
             
         
-        return redirect ('post',title=post.title)
+        return redirect ('post',title=post.slug)
     return redirect('home')    
 
 def search_view(request):

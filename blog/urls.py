@@ -4,6 +4,7 @@ urlpatterns = [
     path('',views.blog,name='home'),
     path('post/<slug:title>/',views.post,name='post'),
     path('comment',views.post_comment,name='comment'),
+    path('like',views.like_view,name='like'),
     path('search',views.search_view,name='search'),
     path('category/<str:cat>/',views.get_category,name='category'),
     path('add',views.add_post,name='add'),

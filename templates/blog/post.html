@@ -25,16 +25,33 @@
                             <img class="img-fluid" src="{{post.thumbnail.url}}" class='img-responsive img-fluid img-thumbnail' height='1000' width='1000'   alt="">
                             <div class="blog_content">
                                 <div class="post_date">
-                                    <h2>14 <span>March</span></h2>
+                                    <h2>{{like}}❤️ <span><!--March--></span></h2>
                                 </div>
                                 <div class="entry_post_info">
                                     By: <a href="">{{post.user}}</a>
-                                    C
+                                    
                                     <a href="">{{post.category}}</a>
+                                    
+                                     
                                 </div>
                                 <a href="#">
                                     <h5 class="f_p f_size_20 f_500 t_color mb_20">{{post.title}}</h5>
                                 </a>
+                                
+                        <form class="get_quote_form row" action="{% url 'like'%}" method="post" >{% csrf_token %}
+                            <div class="col-md-12 form-group" type='hidden'>
+                                <textarea hidden type="hidden" class="form-control" placeholder="User Name" name='name' value='{{request.user.username}}'   ></textarea>
+                            </div>
+
+                            <div class="col-md-12 form-group" type='hidden' >
+                                <textarea hidden type="hidden" class="form-control" placeholder="Like" name='loves' value='1'  ></textarea>
+                            </div>
+                            <div class="col-md-12 form-group" type='hidden' >
+                                <input type="hidden" class="form-control" id="website" value="{{post.id}}" placeholder="Website (optional)" name='id'>
+                            </div>
+                            
+                            <div class="col-md-12"><button class="btn btn_three btn_hover f_size_15 f_500" type="submit">Like</button></div>
+                        </form>
                                 <p class="f_400 mb-30">{{post.description | safe }}</p>
                                  <a href="https://api.whatsapp.com/send?phone=919492330558&text= https://venkatsai-events.herokuapp.com/post/{{slug}} " class="learn_btn_two">Order <i class="ti-arrow-right"></i></a>
                                 <!--<blockquote class="blockquote mb_40">
@@ -101,7 +118,7 @@
                         <!-- Comment -->
 
                         <div class="widget_title mt_100">
-                            <h3 class="f_p f_size_20 t_color3">2 Comment</h3>
+                            <h3 class="f_p f_size_20 t_color3">Comments</h3>
                             <div class="border_bottom"></div>
                         </div>
                         <ul class="comment-box list-unstyled mb-0">
